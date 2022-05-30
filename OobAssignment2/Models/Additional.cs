@@ -4,8 +4,8 @@ using System.Text;
 
 namespace OobAssignment2.Models
 {
-    public class PersonModel
+    public class AdditionalModel
     {
-        public string Ticket { get; set; }
+        public string Addon { get; set; }
     }
 }

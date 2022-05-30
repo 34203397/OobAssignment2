@@ -10,63 +10,86 @@ namespace OobAssignment2.ViewModels
 {
     public class ShellViewModel : Conductor<object>
     {
-        private string _firstname = "Tim";
-        private string _Lastname;
+        private string _ticket;
+        private string _addon;
         private BindableCollection<PersonModel> _people = new BindableCollection<PersonModel>();
-        private PersonModel _selectedperson;
+        private BindableCollection<AdditionalModel> _add = new BindableCollection<AdditionalModel>();
+        private PersonModel _selectedticket;
+        private AdditionalModel _selectedaddon;
 
         public ShellViewModel()
         {
-            People.Add(new PersonModel { Firstname = "Tim", Lastname = "Corey" });
-            People.Add(new PersonModel { Firstname = "Bob", Lastname = "Smith" });
-            People.Add(new PersonModel { Firstname = "Phill", Lastname = "Cook" });
+            People.Add(new PersonModel { Ticket = "Adult"});
+            People.Add(new PersonModel { Ticket = "Child"});
+            People.Add(new PersonModel { Ticket = "Members"});
+            Add.Add(new AdditionalModel { Addon = "Pie and Pint" });
         }
-
-        public string Firstname
+        //Creating public objects that gets and sets variables on what being shown
+        public string Ticket
         {
             get
             {
-                return _firstname;
+                return _ticket;
             }
             set
             {
-                _firstname = value;
-                NotifyOfPropertyChange(() => Firstname);
+                _ticket = value;
+                NotifyOfPropertyChange(() => Ticket);
                 NotifyOfPropertyChange(() => Fullname);
             }
         }
-
-        public string Lastname
+        public string Addon
         {
-            get { return _Lastname;  }
+            get
+            {
+                return _addon;
+            }
             set
             {
-                _Lastname = value;
-                NotifyOfPropertyChange(() => Lastname);
+                _addon = value;
+                NotifyOfPropertyChange(() => Addon);
                 NotifyOfPropertyChange(() => Fullname);
             }
         }
-
+        //fetching the full name created by what ever the other objects are set to
         public string Fullname
         {
-            get { return $"{ Firstname } { Lastname }"; }
+            get { return $"{ Ticket } { Addon }"; }
         }
-
+        //fetching the collections of data for these objects
         public BindableCollection<PersonModel> People
         {
             get { return _people; }
             set { _people = value; }
         }
-        
-        public PersonModel SelectedPerson
+
+        public BindableCollection<AdditionalModel> Add
         {
-            get { return _selectedperson; }
+            get { return _add; }
+            set { _add = value; }
+        }
+
+        //Code to fetch the variables selected in the drop boxes and check if they get changed throughout the process
+        public PersonModel SelectedTicket
+        {
+            get { return _selectedticket; }
             set 
             { 
-                _selectedperson = value;
-                NotifyOfPropertyChange(() => SelectedPerson);
+                _selectedticket = value;
+                NotifyOfPropertyChange(() => SelectedTicket);
             }
         }
+
+        public AdditionalModel SelectedAddon
+        {
+            get { return _selectedaddon; }
+            set
+            {
+                _selectedaddon = value;
+                NotifyOfPropertyChange(() => SelectedAddon);
+            }
+        }
+
 
         public bool CanClearText(string firstname, string lastname)
         {
@@ -74,20 +97,10 @@ namespace OobAssignment2.ViewModels
             return !String.IsNullOrWhiteSpace(firstname) || !String.IsNullOrWhiteSpace(lastname);
         }
 
-        public void ClearText(string firstname, string lastname)
-        {
-            Firstname = "";
-            Lastname = "";
-        }
-
+        //Loading Displat page to present the charges and prices
         public void LoadPageOne()
         {
             ActivateItemAsync(new FirstChildViewModel());
-        }
-        
-        public void LoadPageTwo()
-        {
-            ActivateItemAsync(new SecondChildViewModel());
         }
     }
 }
