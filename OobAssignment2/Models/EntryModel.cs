@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OobAssignment2.Models
 {
-    public class PersonModel
+    public class EntryModel
     {
         public string Ticket { get; set; }
     }

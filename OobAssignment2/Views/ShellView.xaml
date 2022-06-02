@@ -13,11 +13,13 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -31,30 +33,26 @@
         
         
         <!--Row 1-->
-        <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1">Enter Ticket Type</TextBox>
+        <TextBlock MinWidth="100" Grid.Row="1" Grid.Column="1">Enter Ticket Type</TextBlock>
+
         <!--Row 2-->
-        <ComboBox Grid.Row="2" Grid.Column="1" x:Name ="People"
+        <ComboBox Grid.Row="2" Grid.Column="1" x:Name ="Entry"
                   SelectedItem="{Binding Path=SelectedTicket, Mode=OneWayToSource}"
-                  DisplayMemberPath="Ticket"></ComboBox>
-        <TextBlock Grid.Row="1" Grid.Column="2" x:Name="SelectedTicket_Ticket"/>
-        
+                  DisplayMemberPath="Ticket"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" x:Name="SelectedTicket_Ticket"/>
+        <Button Grid.Row="2" Grid.Column="3" Name="Bill">Add</Button>
         <!--Row 3-->
-        <Button x:Name="MainCharge" Grid.Row="3" Grid.Column="1">Submit</Button>
+        <TextBlock MinWidth="100" Grid.Row="3" Grid.Column="1">Enter any Additional Items</TextBlock>
 
         <!--Row 4-->
-        <TextBox MinWidth="100" Grid.Row="4" Grid.Column="1">Enter any Additional Items</TextBox>
-
-        <!--Row 5-->
-        <ComboBox Grid.Row="5" Grid.Column="1" x:Name ="Add"
+        <ComboBox Grid.Row="4" Grid.Column="1" x:Name ="Add"
                   SelectedItem="{Binding Path=SelectedAddon, Mode=OneWayToSource}"
                   DisplayMemberPath="Addon"></ComboBox>
-        <TextBlock Grid.Row="3" Grid.Column="2" x:Name="SelectedAddon_Addon"/>
+        <TextBlock Grid.Row="4" Grid.Column="2" x:Name="SelectedAddon_Addon"/>
         
-        <!--Row 6-->
-        <Button x:Name="LoadPageOne" Grid.Row="6" Grid.Column="1">Submit</Button>
+        <!--Row 5-->
+        <ListBox Grid.Row="1" Grid.Column="1" x:Name="TList"
+                  SelectedItem="{Binding Path=SelectedType, Mode=OneWayToSource}" />
 
-        <!--Row 6-->
-        <ContentControl Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="2"
-                        x:Name="ActiveItem"/>
     </Grid>
 </Window>
