@@ -106,64 +106,64 @@ namespace OobAssignment2.ViewModels
             {
                 //display error in whatever im using
             }
-            if (SelectedTicket.Ticket == "Adult")
+            else if (SelectedTicket.Ticket == "Adult")
             {
-                Adult adult = new Adult();
+                TicketType adult = new Adult();
                 if (SelectedAddon != null)
                 {
                     //display error in whatever im using
                 }
                 if (SelectedAddon.Addon == "Horn")
                 {
-
+                    adult = new Horn(adult);
                 }
                 if (SelectedAddon.Addon == "Pie and Pint")
                 {
-
+                    adult = new PieandPint(adult);
                 }
                 if (SelectedAddon.Addon == "Tour")
                 {
-
+                    adult = new Tour(adult);
                 }
             }
-            if (SelectedTicket.Ticket == "Child")
-            {
-                Child child = new Child();
+           else if (SelectedTicket.Ticket == "Child")
+           {
+                TicketType child = new Child();
                 if (SelectedAddon != null)
                 {
                     //display error in whatever im using
                 }
                 if (SelectedAddon.Addon == "Horn")
                 {
-
+                    child = new Horn(child);
                 }
                 if (SelectedAddon.Addon == "Pie and Pint")
                 {
-
+                    child = new PieandPint(child);
                 }
                 if (SelectedAddon.Addon == "Tour")
                 {
-
+                    child = new Tour(child);
                 }
-            }
-            if (SelectedTicket.Ticket == "Member")
+           }
+            else if (SelectedTicket.Ticket == "Member")
             {
-                Members member = new Members();
+                TicketType member = new Members();
                 if (SelectedAddon != null)
                 {
                     //display error in whatever im using
                 }
                 if (SelectedAddon.Addon == "Horn")
                 {
-
+                    member = new Horn(member);
                 }
                 if (SelectedAddon.Addon == "Pie and Pint")
                 {
-
+                    member = new PieandPint(member);
                 }
                 if (SelectedAddon.Addon == "Tour")
                 {
-
+                    member = new Tour(member);
                 }
             }
         }

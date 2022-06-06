@@ -48,7 +48,7 @@
         <TextBlock Grid.Row="4" Grid.Column="2" x:Name="SelectedAddon_Addon"/>
         
         <!--Row 5-->
-        <Button Grid.Row="6" Grid.Column="2" x:Name="OnSubmitButtonClicked">Submit</Button>/>
+        <Button Grid.Row="6" Grid.Column="2" x:Name="OnSubmitButtonClicked">Submit</Button>
         <TextBlock MinWidth="100" Grid.Row="6" Grid.Column="1" Text="{Binding Path=Cheque, Mode=OneWay}" />
 
     </Grid>
