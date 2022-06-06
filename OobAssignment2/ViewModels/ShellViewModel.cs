@@ -75,9 +75,10 @@ namespace OobAssignment2.ViewModels
             get { return _cheq; }
             set { _cheq = value; }
         }
+
         public string Total
         {
-            get { return $" {charge} {bill} "; }
+            get { return $" Ticket: {charge} Total of: £{bill} "; }
         }
 
         //Code to fetch the variables selected in the drop boxes and check if they get changed throughout the process using notifyofchange
@@ -160,6 +161,7 @@ namespace OobAssignment2.ViewModels
                 double cost = member.Cost();
                 bill = cost;
             }
+            NotifyOfPropertyChange(() => Total);
         }
     }
 }
