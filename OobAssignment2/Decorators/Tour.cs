@@ -20,7 +20,7 @@ namespace Decorator.Decorators
         public override double Cost()
         //creatting the method Cost that is set to public double and the overide to modify the abstraction
         {
-            return .15 + _extra.Cost();
+            return 25.50 + _extra.Cost();
             //returning the value 6.5 for the Cost method
         }
 
