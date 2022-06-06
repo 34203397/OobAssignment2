@@ -13,6 +13,8 @@ namespace OobAssignment2.ViewModels
     public class ShellViewModel : Screen
     {
         public string error = "You haven't entered anything";
+        public string charge;
+        private double bill;
         private string _ticket;
         private string _addon;
         private EntryModel _selectedticket;
@@ -20,6 +22,7 @@ namespace OobAssignment2.ViewModels
         private BindableCollection<EntryModel> _entry = new BindableCollection<EntryModel>();
         private BindableCollection<AdditionalModel> _add = new BindableCollection<AdditionalModel>();
         private BindableCollection<BillModel> _cheq = new BindableCollection<BillModel>();
+
 
 
         //sending the data to shellviewmodel to put into the combo boxes
@@ -125,6 +128,9 @@ namespace OobAssignment2.ViewModels
                 {
                     adult = new Tour(adult);
                 }
+                charge = adult.Description;
+                double cost = adult.Cost();
+                bill = cost;
             }
            else if (SelectedTicket.Ticket == "Child")
            {
@@ -145,7 +151,10 @@ namespace OobAssignment2.ViewModels
                 {
                     child = new Tour(child);
                 }
-           }
+                charge = child.Description;
+                double cost = child.Cost();
+                bill = cost;
+            }
             else if (SelectedTicket.Ticket == "Member")
             {
                 TicketType member = new Members();
@@ -165,6 +174,9 @@ namespace OobAssignment2.ViewModels
                 {
                     member = new Tour(member);
                 }
+                charge = member.Description;
+                double cost = member.Cost();
+                bill = cost;
             }
         }
     }
