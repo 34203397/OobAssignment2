@@ -1,10 +1,5 @@
 ﻿using Caliburn.Micro;
 using OobAssignment2.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Decorator.Components;
 using Decorator.Decorators;
 
@@ -14,7 +9,7 @@ namespace OobAssignment2.ViewModels
     {
         public string error = "You haven't entered anything";
         public string charge;
-        private double bill;
+        public double bill;
         private string _ticket;
         private string _addon;
         private EntryModel _selectedticket;
@@ -61,7 +56,6 @@ namespace OobAssignment2.ViewModels
                 NotifyOfPropertyChange(() => Addon);
             }
         }
-
         //fetching the collections of data for these objects
         public BindableCollection<EntryModel> Entry
         {
@@ -81,7 +75,10 @@ namespace OobAssignment2.ViewModels
             get { return _cheq; }
             set { _cheq = value; }
         }
-
+        public string Total
+        {
+            get { return $" {charge} {bill} "; }
+        }
 
         //Code to fetch the variables selected in the drop boxes and check if they get changed throughout the process using notifyofchange
         public EntryModel SelectedTicket
@@ -106,16 +103,9 @@ namespace OobAssignment2.ViewModels
         //The Button to process the user input.
         public void OnSubmitButtonClicked()
         {
-            if (SelectedTicket.Ticket != null)
-            {
-            }
-            else if (SelectedTicket.Ticket == "Adult")
+            if (SelectedTicket.Ticket == "Adult")
             {
                 TicketType adult = new Adult();
-                if (SelectedAddon != null)
-                {
-                    //display error in whatever im using
-                }
                 if (SelectedAddon.Addon == "Horn")
                 {
                     adult = new Horn(adult);
@@ -135,10 +125,6 @@ namespace OobAssignment2.ViewModels
            else if (SelectedTicket.Ticket == "Child")
            {
                 TicketType child = new Child();
-                if (SelectedAddon != null)
-                {
-                    //display error in whatever im using
-                }
                 if (SelectedAddon.Addon == "Horn")
                 {
                     child = new Horn(child);
@@ -158,10 +144,6 @@ namespace OobAssignment2.ViewModels
             else if (SelectedTicket.Ticket == "Member")
             {
                 TicketType member = new Members();
-                if (SelectedAddon != null)
-                {
-                    //display error in whatever im using
-                }
                 if (SelectedAddon.Addon == "Horn")
                 {
                     member = new Horn(member);
@@ -179,10 +161,5 @@ namespace OobAssignment2.ViewModels
                 bill = cost;
             }
         }
-        public  string Total
-        {
-            get { return $" {charge} {bill} "; }
-        }
-
     }
 }
