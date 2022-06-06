@@ -12,21 +12,15 @@ namespace OobAssignment2.ViewModels
 {
     public class ShellViewModel : Screen
     {
-        //public string charge;
+        public string error = "You haven't entered anything";
         private string _ticket;
         private string _addon;
         private EntryModel _selectedticket;
-        _selectedticket.Ticket = "Adult";
         private AdditionalModel _selectedaddon;
         private BindableCollection<EntryModel> _entry = new BindableCollection<EntryModel>();
         private BindableCollection<AdditionalModel> _add = new BindableCollection<AdditionalModel>();
         private BindableCollection<BillModel> _cheq = new BindableCollection<BillModel>();
 
-
-        //Creating instances of the decorator components
-        readonly Adult adult = new Adult();
-        readonly Child child = new Child();
-        readonly Members member = new Members();
 
         //sending the data to shellviewmodel to put into the combo boxes
         public ShellViewModel()
@@ -94,7 +88,6 @@ namespace OobAssignment2.ViewModels
             { 
                 _selectedticket = value;
                 NotifyOfPropertyChange(() => SelectedTicket);
-                NotifyOfPropertyChange(() => Cheque);
             }
         }
 
@@ -105,22 +98,74 @@ namespace OobAssignment2.ViewModels
             {
                 _selectedaddon = value;
                 NotifyOfPropertyChange(() => SelectedAddon);
-                NotifyOfPropertyChange(() => Cheque);
             }
         }
         public void OnSubmitButtonClicked()
         {
             if (SelectedTicket != null)
             {
-                public string Cheque;
+                //display error in whatever im using
+            }
+            if (SelectedTicket.Ticket == "Adult")
+            {
+                Adult adult = new Adult();
+                if (SelectedAddon != null)
                 {
-                    
+                    //display error in whatever im using
+                }
+                if (SelectedAddon.Addon == "Horn")
+                {
+
+                }
+                if (SelectedAddon.Addon == "Pie and Pint")
+                {
+
+                }
+                if (SelectedAddon.Addon == "Tour")
+                {
+
+                }
+            }
+            if (SelectedTicket.Ticket == "Child")
+            {
+                Child child = new Child();
+                if (SelectedAddon != null)
+                {
+                    //display error in whatever im using
+                }
+                if (SelectedAddon.Addon == "Horn")
+                {
+
+                }
+                if (SelectedAddon.Addon == "Pie and Pint")
+                {
+
+                }
+                if (SelectedAddon.Addon == "Tour")
+                {
+
+                }
+            }
+            if (SelectedTicket.Ticket == "Member")
+            {
+                Members member = new Members();
+                if (SelectedAddon != null)
+                {
+                    //display error in whatever im using
+                }
+                if (SelectedAddon.Addon == "Horn")
+                {
+
+                }
+                if (SelectedAddon.Addon == "Pie and Pint")
+                {
+
+                }
+                if (SelectedAddon.Addon == "Tour")
+                {
+
+                }
             }
         }
-public string Cheque
-{
-    get { return $"{SelectedTicket.Ticket} {SelectedAddon.Addon}"; }
-}
-
     }
 }
