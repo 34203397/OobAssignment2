@@ -48,8 +48,12 @@
         <TextBlock Grid.Row="4" Grid.Column="2" x:Name="SelectedAddon_Addon"/>
         
         <!--Row 5-->
-        <Button Grid.Row="6" Grid.Column="2" x:Name="OnSubmitButtonClicked">Submit</Button>/>
-        <TextBlock MinWidth="100" Grid.Row="6" Grid.Column="1" Text="{Binding Path=Cheque, Mode=OneWay}" />
+        <Button Grid.Row="5" Grid.Column="1" x:Name="OnSubmitButtonClicked">Submit</Button>
+        
+        <!--Row 6-->
+        <TextBox Grid.Row="6" Grid.Column="1" x:Name="Total" Text="{Binding Path=Total, Mode=OneWay}"/>
+        <TextBlock Grid.Row="6" Grid.Column="2" Text="{Binding Path=charge, Mode=OneWay}"/>
+        <TextBlock Grid.Row="6" Grid.Column="3" Text="{Binding Path=bill, Mode=OneWay}"/>
 
     </Grid>
 </Window>

@@ -1,10 +1,5 @@
 ﻿using Caliburn.Micro;
 using OobAssignment2.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Decorator.Components;
 using Decorator.Decorators;
 
@@ -12,27 +7,24 @@ namespace OobAssignment2.ViewModels
 {
     public class ShellViewModel : Screen
     {
-        //public string charge;
+        public string error = "You haven't entered anything";
+        public string charge;
+        public double bill;
         private string _ticket;
         private string _addon;
         private EntryModel _selectedticket;
-        _selectedticket.Ticket = "Adult";
         private AdditionalModel _selectedaddon;
         private BindableCollection<EntryModel> _entry = new BindableCollection<EntryModel>();
         private BindableCollection<AdditionalModel> _add = new BindableCollection<AdditionalModel>();
         private BindableCollection<BillModel> _cheq = new BindableCollection<BillModel>();
 
 
-        //Creating instances of the decorator components
-        readonly Adult adult = new Adult();
-        readonly Child child = new Child();
-        readonly Members member = new Members();
 
         //sending the data to shellviewmodel to put into the combo boxes
         public ShellViewModel()
         {
-            Entry.Add(new EntryModel { Ticket = "Adult" }) ;
-            Entry.Add(new EntryModel { Ticket = "Child"});
+            Entry.Add(new EntryModel { Ticket = "Adult" });
+            Entry.Add(new EntryModel { Ticket = "Child" });
             Entry.Add(new EntryModel { Ticket = "Member" });
             Add.Add(new AdditionalModel { Addon = "Horn" });
             Add.Add(new AdditionalModel { Addon = "Pie and Pint" });
@@ -64,7 +56,6 @@ namespace OobAssignment2.ViewModels
                 NotifyOfPropertyChange(() => Addon);
             }
         }
-
         //fetching the collections of data for these objects
         public BindableCollection<EntryModel> Entry
         {
@@ -77,24 +68,26 @@ namespace OobAssignment2.ViewModels
             get { return _add; }
             set { _add = value; }
         }
-        
+
 
         public BindableCollection<BillModel> Bill
         {
             get { return _cheq; }
             set { _cheq = value; }
         }
-
+        public string Total
+        {
+            get { return $" {charge} {bill} "; }
+        }
 
         //Code to fetch the variables selected in the drop boxes and check if they get changed throughout the process using notifyofchange
         public EntryModel SelectedTicket
         {
             get { return _selectedticket; }
-            set 
-            { 
+            set
+            {
                 _selectedticket = value;
                 NotifyOfPropertyChange(() => SelectedTicket);
-                NotifyOfPropertyChange(() => Cheque);
             }
         }
 
@@ -105,22 +98,68 @@ namespace OobAssignment2.ViewModels
             {
                 _selectedaddon = value;
                 NotifyOfPropertyChange(() => SelectedAddon);
-                NotifyOfPropertyChange(() => Cheque);
             }
         }
+        //The Button to process the user input.
         public void OnSubmitButtonClicked()
         {
-            if (SelectedTicket != null)
+            if (SelectedTicket.Ticket == "Adult")
             {
-                public string Cheque;
+                TicketType adult = new Adult();
+                if (SelectedAddon.Addon == "Horn")
                 {
-                    
+                    adult = new Horn(adult);
+                }
+                if (SelectedAddon.Addon == "Pie and Pint")
+                {
+                    adult = new PieandPint(adult);
+                }
+                if (SelectedAddon.Addon == "Tour")
+                {
+                    adult = new Tour(adult);
+                }
+                charge = adult.Description;
+                double cost = adult.Cost();
+                bill = cost;
+            }
+           else if (SelectedTicket.Ticket == "Child")
+           {
+                TicketType child = new Child();
+                if (SelectedAddon.Addon == "Horn")
+                {
+                    child = new Horn(child);
+                }
+                if (SelectedAddon.Addon == "Pie and Pint")
+                {
+                    child = new PieandPint(child);
+                }
+                if (SelectedAddon.Addon == "Tour")
+                {
+                    child = new Tour(child);
+                }
+                charge = child.Description;
+                double cost = child.Cost();
+                bill = cost;
+            }
+            else if (SelectedTicket.Ticket == "Member")
+            {
+                TicketType member = new Members();
+                if (SelectedAddon.Addon == "Horn")
+                {
+                    member = new Horn(member);
+                }
+                if (SelectedAddon.Addon == "Pie and Pint")
+                {
+                    member = new PieandPint(member);
+                }
+                if (SelectedAddon.Addon == "Tour")
+                {
+                    member = new Tour(member);
+                }
+                charge = member.Description;
+                double cost = member.Cost();
+                bill = cost;
             }
         }
-public string Cheque
-{
-    get { return $"{SelectedTicket.Ticket} {SelectedAddon.Addon}"; }
-}
-
     }
 }

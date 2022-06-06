@@ -1,5 +1,4 @@
 ﻿using Decorator.Components;
-using Decorator.Decorators;
 //The Using directive allowing you to use data from other files
 namespace Decorator.Decorators
 //creating a public class called program for ogranisation
