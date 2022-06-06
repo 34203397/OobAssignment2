@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OobAssignment2.Models
 {
-    internal class BillModel
+    public class BillModel
     {
         public string Bill { get; set; }
     }

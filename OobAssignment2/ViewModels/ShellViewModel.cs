@@ -10,16 +10,17 @@ using Decorator.Decorators;
 
 namespace OobAssignment2.ViewModels
 {
-    public class ShellViewModel : Conductor<object>
+    public class ShellViewModel : Screen
     {
         //public string charge;
         private string _ticket;
         private string _addon;
-        private string _bill;
         private EntryModel _selectedticket;
+        _selectedticket.Ticket = "Adult";
         private AdditionalModel _selectedaddon;
         private BindableCollection<EntryModel> _entry = new BindableCollection<EntryModel>();
         private BindableCollection<AdditionalModel> _add = new BindableCollection<AdditionalModel>();
+        private BindableCollection<BillModel> _cheq = new BindableCollection<BillModel>();
 
 
         //Creating instances of the decorator components
@@ -30,12 +31,13 @@ namespace OobAssignment2.ViewModels
         //sending the data to shellviewmodel to put into the combo boxes
         public ShellViewModel()
         {
-            Entry.Add(new EntryModel { Ticket = adult.Description}) ;
-            Entry.Add(new EntryModel { Ticket = child.Description});
-            Entry.Add(new EntryModel { Ticket = member.Description});
+            Entry.Add(new EntryModel { Ticket = "Adult" }) ;
+            Entry.Add(new EntryModel { Ticket = "Child"});
+            Entry.Add(new EntryModel { Ticket = "Member" });
             Add.Add(new AdditionalModel { Addon = "Horn" });
             Add.Add(new AdditionalModel { Addon = "Pie and Pint" });
             Add.Add(new AdditionalModel { Addon = "Tour" });
+
         }
         //Creating public objects that gets and sets variables on what being shown depending on the drop item users choose
         public string Ticket
@@ -62,6 +64,7 @@ namespace OobAssignment2.ViewModels
                 NotifyOfPropertyChange(() => Addon);
             }
         }
+
         //fetching the collections of data for these objects
         public BindableCollection<EntryModel> Entry
         {
@@ -74,6 +77,14 @@ namespace OobAssignment2.ViewModels
             get { return _add; }
             set { _add = value; }
         }
+        
+
+        public BindableCollection<BillModel> Bill
+        {
+            get { return _cheq; }
+            set { _cheq = value; }
+        }
+
 
         //Code to fetch the variables selected in the drop boxes and check if they get changed throughout the process using notifyofchange
         public EntryModel SelectedTicket
@@ -83,6 +94,7 @@ namespace OobAssignment2.ViewModels
             { 
                 _selectedticket = value;
                 NotifyOfPropertyChange(() => SelectedTicket);
+                NotifyOfPropertyChange(() => Cheque);
             }
         }
 
@@ -93,14 +105,22 @@ namespace OobAssignment2.ViewModels
             {
                 _selectedaddon = value;
                 NotifyOfPropertyChange(() => SelectedAddon);
+                NotifyOfPropertyChange(() => Cheque);
             }
         }
-
-
-        private void Bill()
+        public void OnSubmitButtonClicked()
         {
-            
+            if (SelectedTicket != null)
+            {
+                public string Cheque;
+                {
+                    
+            }
         }
+public string Cheque
+{
+    get { return $"{SelectedTicket.Ticket} {SelectedAddon.Addon}"; }
+}
 
     }
 }
