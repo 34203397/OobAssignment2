@@ -28,8 +28,8 @@ namespace OobAssignment2.ViewModels
         //sending the data to shellviewmodel to put into the combo boxes
         public ShellViewModel()
         {
-            Entry.Add(new EntryModel { Ticket = "Adult" }) ;
-            Entry.Add(new EntryModel { Ticket = "Child"});
+            Entry.Add(new EntryModel { Ticket = "Adult" });
+            Entry.Add(new EntryModel { Ticket = "Child" });
             Entry.Add(new EntryModel { Ticket = "Member" });
             Add.Add(new AdditionalModel { Addon = "Horn" });
             Add.Add(new AdditionalModel { Addon = "Pie and Pint" });
@@ -74,7 +74,7 @@ namespace OobAssignment2.ViewModels
             get { return _add; }
             set { _add = value; }
         }
-        
+
 
         public BindableCollection<BillModel> Bill
         {
@@ -87,8 +87,8 @@ namespace OobAssignment2.ViewModels
         public EntryModel SelectedTicket
         {
             get { return _selectedticket; }
-            set 
-            { 
+            set
+            {
                 _selectedticket = value;
                 NotifyOfPropertyChange(() => SelectedTicket);
             }
@@ -103,11 +103,11 @@ namespace OobAssignment2.ViewModels
                 NotifyOfPropertyChange(() => SelectedAddon);
             }
         }
+        //The Button to process the user input.
         public void OnSubmitButtonClicked()
         {
-            if (SelectedTicket != null)
+            if (SelectedTicket.Ticket != null)
             {
-                //display error in whatever im using
             }
             else if (SelectedTicket.Ticket == "Adult")
             {
@@ -179,5 +179,10 @@ namespace OobAssignment2.ViewModels
                 bill = cost;
             }
         }
+        public  string Total
+        {
+            get { return $" {charge} {bill} "; }
+        }
+
     }
 }
