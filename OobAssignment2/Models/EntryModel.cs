@@ -4,8 +4,8 @@ using System.Text;
 
 namespace OobAssignment2.Models
 {
-    public class EntryModel
+    public class EntryModel//new class
     {
-        public string Ticket { get; set; }
+        public string Ticket { get; set; }//getters and setters
     }
 }

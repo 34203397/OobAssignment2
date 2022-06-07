@@ -7,7 +7,7 @@ namespace Decorator.Components
     //Creating a new public class frenchcrepes that inherits to pancakes
     {
         public Members()
-        //Constructor crating Frenchcrepes
+        //Constructor crating Members
         {
             Description = "Member";
             //adding a string to the description attribute

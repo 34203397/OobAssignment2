@@ -5,16 +5,16 @@ namespace Decorator.Decorators
 //creating a public class called program for ogranisation
 {
     public class Tour : ExtraCharges
-    //Creating a new public class Lemon that inherits to CondimentDecorator
+    //Creating a new public class Lemon that inherits to ExtraCharges
     {
         private readonly TicketType _extra;
         //creating a field thats private and readonly so it cannot be seen outside of the method and cannot be changed
 
         public Tour(TicketType Extra)
-        // A constructor using the arguments pancakes in the parameter Dish
+        // A constructor using the arguments Tickettype in the parameter Extra
         {
             _extra = Extra;
-            //Setting the _Dish field equaul to the variable Dish
+            //Setting the _extra field equaul to the variable Extra
         }
 
         public override double Cost()
@@ -25,7 +25,7 @@ namespace Decorator.Decorators
         }
 
         public override string Description => _extra.Description + ", Guided Tour";
-        //Creating the field description with the addition of the string Lemon using the lambda
+        //Creating the field description with the addition of the string Tour using the lambda
     }
 }
 

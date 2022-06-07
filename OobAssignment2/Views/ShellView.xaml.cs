@@ -15,9 +15,9 @@ namespace OobAssignment2.Views
     /// <summary>
     /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class ShellView : Window
+    public partial class ShellView : Window//class shellview created that inherits from window
     {
-        public ShellView()
+        public ShellView()//constructor that calls initializecomponent method
         {
             InitializeComponent();
         }

@@ -6,7 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    <local:Bootstrapper x:Key="Bootstrapper" />
+                    <local:Bootstrapper x:Key="Bootstrapper" /><!--Xml sending the app to bootstrapper so shellview can be displayed-->
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
