@@ -4,13 +4,13 @@ namespace Decorator.Components
 //creating a public class called program for ogranisation
 {
     public class Adult : TicketType
-    //Creating a new public class AmericanStyle that inherits to pancakes
+    //Creating a new public class Adult that inherits to Tickettype
     {
         public Adult()
-        //Constructor making American style
+        //Constructor making Adult
         {
             Description = "Adult";
-            //setting the Description field with Americanstyle string
+            //setting the Description field with Adult string
         }
 
         public override double Cost()

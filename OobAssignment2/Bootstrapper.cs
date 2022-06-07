@@ -9,14 +9,14 @@ using System.Windows;
 
 namespace OobAssignment2
 {
-    public class Bootstrapper : BootstrapperBase
+    public class Bootstrapper : BootstrapperBase//creating bootstrapper class that inheritences from bootstrapperbase
     {
-        public Bootstrapper()
+        public Bootstrapper()//constructor that calls the initializer method
         {
             Initialize();
         }
 
-        protected override void OnStartup(object sender, StartupEventArgs e)
+        protected override void OnStartup(object sender, StartupEventArgs e)//method called when app starts displaying the main view
         {
             DisplayRootViewFor<ShellViewModel>();
         }

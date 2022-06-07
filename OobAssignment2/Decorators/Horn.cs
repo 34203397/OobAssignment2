@@ -4,16 +4,16 @@ namespace Decorator.Decorators
 //creating a public class called program for ogranisation
 {
     public class Horn : ExtraCharges
-    //Creating a new public class Syrup that inherits to CondimentDecorator
+    //Creating a new public class Horn that inherits to ExtraCharges
     {
         private readonly TicketType _extra;
         //creating a field thats private and readonly so it cannot be seen outside of the method and cannot be changed
 
         public Horn(TicketType Extra)
-        // A constructor using the arguments pancakes in the parameter Dish
+        // A constructor using the arguments Ticketypw in the parameter Extra
         {
             _extra = Extra;
-            //Setting the _Dish field equaul to the variable Dish
+            //Setting the _extra field equaul to the variable Extra
         }
 
         public override double Cost()

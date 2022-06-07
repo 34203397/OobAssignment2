@@ -12,13 +12,14 @@ namespace OobAssignment2.ViewModels
         public double bill;
         private string _ticket;
         private string _addon;
+        //creating new string property's
         private EntryModel _selectedticket;
         private AdditionalModel _selectedaddon;
+        //creating propertys for constructing the collections
         private BindableCollection<EntryModel> _entry = new BindableCollection<EntryModel>();
         private BindableCollection<AdditionalModel> _add = new BindableCollection<AdditionalModel>();
         private BindableCollection<BillModel> _cheq = new BindableCollection<BillModel>();
-
-
+        //Creating three bindablecollections
 
         //sending the data to shellviewmodel to put into the combo boxes
         public ShellViewModel()
@@ -101,7 +102,7 @@ namespace OobAssignment2.ViewModels
                 NotifyOfPropertyChange(() => SelectedAddon);
             }
         }
-        //The Button to process the user input.
+        //The Button to process the user input with statements to work out the combinations of inputs the user may enter.
         public void OnSubmitButtonClicked()
         {
             if (SelectedTicket.Ticket == "Adult")
@@ -159,7 +160,7 @@ namespace OobAssignment2.ViewModels
                 }
                 charge = member.Description;
                 double cost = member.Cost();
-                bill = cost;
+                bill = cost;//bill and charge propertys will be used to display the components description with decorators and the total price of the items combined
             }
             NotifyOfPropertyChange(() => Total);
         }
